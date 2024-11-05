@@ -1068,7 +1068,6 @@ app.put("/maquina", verifyJwtPessoa, async (req: any, res) => {
         id: true,
         nome: true,
         store_id: true,
-      
         maquininha_serial: true
       }
     });
@@ -1085,30 +1084,12 @@ app.put("/maquina", verifyJwtPessoa, async (req: any, res) => {
         id: req.body.id,
       },
       data: {
-        
-        maquininha_serial: req.body.maquininha_serial,
         nome: req.body.nome,
         descricao: req.body.descricao,
-        valorpoint: req.body.valorpoint,
-        tokenpoint: req.body.tokenpoint,
-        informacao: req.body.informacao,
-        estado: req.body.estado,
-        nomepoint: req.body.nomepoint,
-        whatsapp: req.body.whatsapp,
-        apikey: req.body.apikey,
         store_id: req.body.store_id,
+        maquininha_serial: req.body.maquininha_serial,
         valorDoPulso: req.body.valorDoPulso,
-        probabilidade: req.body.probabilidade,
-        garraforte: req.body.garraforte,
-        contadorcredito: req.body.contadorcredito,
-        contadorcreditobaixo: req.body.contadorcreditobaixo,
-        estoquebaixo: req.body.estoquebaixo,
-        contadorpelucia: req.body.contadorpelucia,
-        estoque: req.body.estoque,
-        estoque2: req.body.estoque2,
-        estoque3: req.body.estoque3,
-        estoque4: req.body.estoque4,
-        estoque5: req.body.estoque5
+        estoque: req.body.estoque
         // Adicione outros campos conforme necessário
       },
     });
@@ -1162,26 +1143,9 @@ app.put("/maquina-cliente", verifyJWT, async (req: any, res) => {
       data: {
         nome: req.body.nome,
         descricao: req.body.descricao,
-        valorpoint: req.body.valorpoint,
-        tokenpoint: req.body.tokenpoint,
-        informacao: req.body.informacao,
-        estado: req.body.estado,
-        nomepoint: req.body.nomepoint,
-        whatsapp: req.body.whatsapp,
-        apikey: req.body.apikey,
         store_id: req.body.store_id,
         valorDoPulso: req.body.valorDoPulso,
-        probabilidade: req.body.probabilidade,
-        garraforte: req.body.garraforte,
-        contadorcreditobaixo: req.body.contadorcreditobaixo,
-        estoquebaixo: req.body.estoquebaixo,
-        contadorcredito: req.body.contadorcredito,
-        contadorpelucia: req.body.contadorpelucia,
-        estoque: req.body.estoque,
-        estoque2: req.body.estoque2,
-        estoque3: req.body.estoque3,
-        estoque4: req.body.estoque4,
-        estoque5: req.body.estoque5
+        estoque: req.body.estoque
         // Adicione outros campos conforme necessário
       },
     });
@@ -1581,50 +1545,26 @@ app.get("/maquinas", verifyJWT, async (req: any, res) => {
             clienteId: maquina.clienteId,
             nome: maquina.nome,
             descricao: maquina.descricao,
-            estado: maquina.estado,
-            probabilidade: maquina.probabilidade,
-            garraforte: maquina.garraforte,
-            contadorcredito: maquina.contadorcredito,
-            contadorpelucia: maquina.contadorpelucia,
-            contadorcreditobaixo: maquina.contadorcreditobaixo,
-            estoquebaixo: maquina.estoquebaixo,
             estoque: maquina.estoque,
-            estoque2: maquina.estoque2,
-            estoque3: maquina.estoque3,
-            estoque4: maquina.estoque4,
-            estoque5: maquina.estoque5,
             store_id: maquina.store_id,
+            maquininha_serial: maquina.maquininha_serial,
             valorDoPix: maquina.valorDoPix,
             dataInclusao: maquina.dataInclusao,
             ultimoPagamentoRecebido: maquina.ultimoPagamentoRecebido,
             ultimaRequisicao: maquina.ultimaRequisicao,
             status: status,
-            pulso: maquina.valorDoPulso,
-            maquininha_serial: maquina.maquininha_serial
-           
+            pulso: maquina.valorDoPulso
           });
         } else {
           maquinasComStatus.push({
-         
-            maquininha_serial: maquina.maquininha_serial,
             id: maquina.id,
             pessoaId: maquina.pessoaId,
             clienteId: maquina.clienteId,
             nome: maquina.nome,
             descricao: maquina.descricao,
-            estado: maquina.estado,
-            probabilidade: maquina.probabilidade,
-            garraforte: maquina.garraforte,
-            contadorcredito: maquina.contadorcredito,
-            contadorpelucia: maquina.contadorpelucia,
-            contadorcreditobaixo: maquina.contadorcreditobaixo,
-            estoquebaixo: maquina.estoquebaixo,
             estoque: maquina.estoque,
-            estoque2: maquina.estoque2,
-            estoque3: maquina.estoque3,
-            estoque4: maquina.estoque4,
-            estoque5: maquina.estoque5,
             store_id: maquina.store_id,
+            maquininha_serial: maquina.maquininha_serial,
             valorDoPix: maquina.valorDoPix,
             dataInclusao: maquina.dataInclusao,
             ultimoPagamentoRecebido: maquina.ultimoPagamentoRecebido,
@@ -1678,33 +1618,14 @@ app.get("/maquinas-adm", verifyJwtPessoa, async (req: any, res) => {
           }
 
           maquinasComStatus.push({
-         
-            maquininha_serial: maquina.maquininha_serial,
             id: maquina.id,
             pessoaId: maquina.pessoaId,
             clienteId: maquina.clienteId,
             nome: maquina.nome,
-            valorpoint: maquina.valorpoint,
-            tokenpoint: maquina.tokenpoint,
-            informacao: maquina.informacao,
-            estado: maquina.estado,
-            nomepoint: maquina.nomepoint,
-            whatsapp: maquina.whatsapp,
-            apikey: maquina.apikey,
             descricao: maquina.descricao,
-            
-            probabilidade: maquina.probabilidade,
-            garraforte: maquina.garraforte,
-            contadorcredito: maquina.contadorcredito,
-            contadorpelucia: maquina.contadorpelucia,
-            contadorcreditobaixo: maquina.contadorcreditobaixo,
-            estoquebaixo: maquina.estoquebaixo,
             estoque: maquina.estoque,
-            estoque2: maquina.estoque2,
-            estoque3: maquina.estoque3,
-            estoque4: maquina.estoque4,
-            estoque5: maquina.estoque5,
             store_id: maquina.store_id,
+            maquininha_serial: maquina.maquininha_serial,
             valorDoPix: maquina.valorDoPix,
             dataInclusao: maquina.dataInclusao,
             ultimoPagamentoRecebido: maquina.ultimoPagamentoRecebido,
@@ -1714,39 +1635,20 @@ app.get("/maquinas-adm", verifyJwtPessoa, async (req: any, res) => {
           });
         } else {
           maquinasComStatus.push({
-        
-            maquininha_serial: maquina.maquininha_serial,
             id: maquina.id,
             pessoaId: maquina.pessoaId,
             clienteId: maquina.clienteId,
             nome: maquina.nome,
             descricao: maquina.descricao,
-            valorpoint: maquina.valorpoint,
-            tokenpoint: maquina.tokenpoint,
-            informacao: maquina.informacao,
-            estado: maquina.estado,
-            nomepoint: maquina.nomepoint,
-            whatsapp: maquina.whatsapp,
-            apikey: maquina.apikey,
-            probabilidade: maquina.probabilidade,
-            garraforte: maquina.garraforte,
-            contadorcredito: maquina.contadorcredito,
-            contadorpelucia: maquina.contadorpelucia,
-            contadorcreditobaixo: maquina.contadorcreditobaixo,
-            estoquebaixo: maquina.estoquebaixo,
             estoque: maquina.estoque,
-            estoque2: maquina.estoque2,
-            estoque3: maquina.estoque3,
-            estoque4: maquina.estoque4,
-            estoque5: maquina.estoque5,
             store_id: maquina.store_id,
+            maquininha_serial: maquina.maquininha_serial,
             valorDoPix: maquina.valorDoPix,
             dataInclusao: maquina.dataInclusao,
             ultimoPagamentoRecebido: maquina.ultimoPagamentoRecebido,
             ultimaRequisicao: maquina.ultimaRequisicao,
             status: "OFFLINE",
             pulso: maquina.valorDoPulso
-            
           });
         }
       }
@@ -1785,24 +1687,14 @@ app.get("/clientes", verifyJwtPessoa, async (req: any, res) => {
         dataVencimento: true,
         Maquina: {
           select: {
-                       maquininha_serial: true, // Adiciona maquininha_serial
-                       id: true,
-                       nome: true,
-                       valorpoint: true,
-                       tokenpoint: true,
-                       informacao: true,
-                       estado: true,
-                       nomepoint: true,
-                       estoque2: true,
-                       whatsapp: true,
-                       apikey: true,
-                       contadorcreditobaixo: true,
-                       estoque5: true,
-                       descricao: true,
-                       store_id: true,
-                       dataInclusao: true,
-                       ultimoPagamentoRecebido: true,
-                       ultimaRequisicao: true,
+            id: true,
+            nome: true,
+            descricao: true,
+            store_id: true,
+            dataInclusao: true,
+            ultimoPagamentoRecebido: true,
+            ultimaRequisicao: true,
+            maquininha_serial: true, // Adiciona maquininha_serial
           },
         },
       },
@@ -3175,7 +3067,7 @@ app.post("/relatorio-01-cash", verifyJWT, async (req, res) => {
       }
     });
 
-    // Calculando o somatório dos valores dos pagamentosjjhh
+    // Calculando o somatório dos valores dos pagamentos
     const somatorio = pagamentos.reduce((acc, pagamento) => acc + parseInt(pagamento.valor), 0);
 
     return res.status(200).json({ valor: somatorio });
