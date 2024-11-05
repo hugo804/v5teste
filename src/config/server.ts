@@ -1068,6 +1068,7 @@ app.put("/maquina", verifyJwtPessoa, async (req: any, res) => {
         id: true,
         nome: true,
         store_id: true,
+      
         maquininha_serial: true
       }
     });
