@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Pix_Maquina {
+  id                      String    @id @default(uuid())
+  pessoaId                String
+  clienteId               String
+  nome                    String
+  descricao               String?
+  nomepoint String?
+  tokenpoint String?
+    informacao String?
+   probabilidade          Int?
+    garraforte          Int?
+    valorpoint String?
+    estado String?
+       whatsapp String?
+          apikey String?
+        contadorcredito          Int?
+         contadorcreditobaixo          Int?
+              estoquebaixo          Int?
+        contadorpelucia          Int?
+    
+    garramedia          Int?
+    garrafraca         Int?
+    garrapegada          Int?
+  estoque                 Int?
+  estoque2                 Int?
+  estoque3                 Int?
+  estoque4                 Int?
+  estoque5                 Int?
+     valorpulso          Int?
+  store_id                String?
+  maquininha_serial       String?
+
+  valorDoPix              String
+  valorDoPulso            String    @default("1")
+  dataInclusao            DateTime  @default(now())
+  ultimoPagamentoRecebido DateTime?
+  ultimaRequisicao        DateTime?
+
+  Pagamento Pix_Pagamento[]
+
+  pessoa  Pix_Pessoa?  @relation(fields: [pessoaId], references: [id])
+  cliente Pix_Cliente? @relation(fields: [clienteId], references: [id])
+}
+
+model Pix_Pessoa {
+  id           String    @id @default(uuid())
+  nome         String
+  email        String    @unique
+  senha        String
+  dataInclusao DateTime  @default(now())
+  ultimoAcesso DateTime?
+
+  Maquina     Pix_Maquina[]
+  Pix_Cliente Pix_Cliente[]
+}
+
+model Pix_Cliente {
+  id               String    @id @default(uuid())
+  nome             String
+  email            String    @unique
+  senha            String
+  mercadoPagoToken String?
+  pagbankEmail     String?
+  pagbankToken     String?
+  pessoaId         String
+  dataInclusao     DateTime  @default(now())
+  ultimoAcesso     DateTime?
+  ativo            Boolean   @default(true)
+  dataVencimento   DateTime?
+
+  Pagamento Pix_Pagamento[]
+
+  pessoa Pix_Pessoa? @relation(fields: [pessoaId], references: [id])
+
+  Maquina Pix_Maquina[]
+}
+
+model Pix_Pagamento {
+  id            String   @id @default(uuid())
+  maquinaId     String
+  valor         String
+  mercadoPagoId String?
+  estornado     Boolean
+  motivoEstorno String?
+  tipo          String?
+  taxas         String?
+  clienteId     String?
+  operadora     String?
+  data          DateTime @default(now())
+  removido      Boolean? @default(false)
+
+  maquina Pix_Maquina? @relation(fields: [maquinaId], references: [id])
+  cliente Pix_Cliente? @relation(fields: [clienteId], references: [id])
+}
+
+model ConfiguracaoMaquina {
+  codigo                  String   @id
+  operacao                Operacao
+  urlServidor             String
+  webhook01               String
+  webhook02               String
+  rotaConsultaStatusMaq    String
+  rotaConsultaAdimplencia String
+  idMaquina               String
+  idCliente               String
+  valor1                  Float
+  valor2                  Float
+  valor3                  Float
+  valor4                  Float
+  textoEmpresa            String
+  corPrincipal            String
+  corSecundaria           String
+  minValue                Float
+  maxValue                Float
+  identificadorMaquininha String
+  serialMaquininha        String
+  macaddressMaquininha    String
+  operadora               String
+  createdAt               DateTime @default(now()) // Campo automático para data de criação
+}
+
+model 
+
+enum Operacao {
+  ABERTO
+  FECHADO
+}
