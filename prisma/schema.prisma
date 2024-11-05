@@ -13,9 +13,32 @@ model Pix_Maquina {
   clienteId               String
   nome                    String
   descricao               String?
+  nomepoint String?
+  tokenpoint String?
+    informacao String?
+   probabilidade          Int?
+    garraforte          Int?
+    valorpoint String?
+    estado String?
+       whatsapp String?
+          apikey String?
+        contadorcredito          Int?
+         contadorcreditobaixo          Int?
+              estoquebaixo          Int?
+        contadorpelucia          Int?
+    
+    garramedia          Int?
+    garrafraca         Int?
+    garrapegada          Int?
+  estoque                 Int?
+  estoque2                 Int?
+  estoque3                 Int?
+  estoque4                 Int?
+  estoque5                 Int?
+     valorpulso          Int?
   store_id                String?
   maquininha_serial       String?
-  estoque                 Int?
+
   valorDoPix              String
   valorDoPulso            String    @default("1")
   dataInclusao            DateTime  @default(now())
@@ -104,6 +127,8 @@ model ConfiguracaoMaquina {
   operadora               String
   createdAt               DateTime @default(now()) // Campo automático para data de criação
 }
+
+model 
 
 enum Operacao {
   ABERTO
