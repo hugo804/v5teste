@@ -3175,7 +3175,7 @@ app.post("/relatorio-01-cash", verifyJWT, async (req, res) => {
       }
     });
 
-    // Calculando o somatório dos valores dos pagamentosjj
+    // Calculando o somatório dos valores dos pagamentosjjhh
     const somatorio = pagamentos.reduce((acc, pagamento) => acc + parseInt(pagamento.valor), 0);
 
     return res.status(200).json({ valor: somatorio });
