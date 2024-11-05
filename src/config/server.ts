@@ -1143,9 +1143,26 @@ app.put("/maquina-cliente", verifyJWT, async (req: any, res) => {
       data: {
         nome: req.body.nome,
         descricao: req.body.descricao,
+        valorpoint: req.body.valorpoint,
+        tokenpoint: req.body.tokenpoint,
+        informacao: req.body.informacao,
+        estado: req.body.estado,
+        nomepoint: req.body.nomepoint,
+        whatsapp: req.body.whatsapp,
+        apikey: req.body.apikey,
         store_id: req.body.store_id,
         valorDoPulso: req.body.valorDoPulso,
-        estoque: req.body.estoque
+        probabilidade: req.body.probabilidade,
+        garraforte: req.body.garraforte,
+        contadorcreditobaixo: req.body.contadorcreditobaixo,
+        estoquebaixo: req.body.estoquebaixo,
+        contadorcredito: req.body.contadorcredito,
+        contadorpelucia: req.body.contadorpelucia,
+        estoque: req.body.estoque,
+        estoque2: req.body.estoque2,
+        estoque3: req.body.estoque3,
+        estoque4: req.body.estoque4,
+        estoque5: req.body.estoque5
         // Adicione outros campos conforme necessário
       },
     });
@@ -1545,26 +1562,48 @@ app.get("/maquinas", verifyJWT, async (req: any, res) => {
             clienteId: maquina.clienteId,
             nome: maquina.nome,
             descricao: maquina.descricao,
+            estado: maquina.estado,
+            probabilidade: maquina.probabilidade,
+            garraforte: maquina.garraforte,
+            contadorcredito: maquina.contadorcredito,
+            contadorpelucia: maquina.contadorpelucia,
+            contadorcreditobaixo: maquina.contadorcreditobaixo,
+            estoquebaixo: maquina.estoquebaixo,
             estoque: maquina.estoque,
+            estoque2: maquina.estoque2,
+            estoque3: maquina.estoque3,
+            estoque4: maquina.estoque4,
+            estoque5: maquina.estoque5,
             store_id: maquina.store_id,
-            maquininha_serial: maquina.maquininha_serial,
             valorDoPix: maquina.valorDoPix,
             dataInclusao: maquina.dataInclusao,
             ultimoPagamentoRecebido: maquina.ultimoPagamentoRecebido,
             ultimaRequisicao: maquina.ultimaRequisicao,
             status: status,
-            pulso: maquina.valorDoPulso
+            pulso: maquina.valorDoPulso,
+            maquininha_serial: maquina.maquininha_serial,
           });
         } else {
           maquinasComStatus.push({
+            maquininha_serial: maquina.maquininha_serial,
             id: maquina.id,
             pessoaId: maquina.pessoaId,
             clienteId: maquina.clienteId,
             nome: maquina.nome,
             descricao: maquina.descricao,
+            estado: maquina.estado,
+            probabilidade: maquina.probabilidade,
+            garraforte: maquina.garraforte,
+            contadorcredito: maquina.contadorcredito,
+            contadorpelucia: maquina.contadorpelucia,
+            contadorcreditobaixo: maquina.contadorcreditobaixo,
+            estoquebaixo: maquina.estoquebaixo,
             estoque: maquina.estoque,
+            estoque2: maquina.estoque2,
+            estoque3: maquina.estoque3,
+            estoque4: maquina.estoque4,
+            estoque5: maquina.estoque5,
             store_id: maquina.store_id,
-            maquininha_serial: maquina.maquininha_serial,
             valorDoPix: maquina.valorDoPix,
             dataInclusao: maquina.dataInclusao,
             ultimoPagamentoRecebido: maquina.ultimoPagamentoRecebido,
@@ -4255,7 +4294,8 @@ app.post("/pagamentos-periodo-adm/:maquinaId", verifyJwtPessoa, async (req: any,
     }
 
     return res.status(200).json({ "total": totalSemEstorno, "estornos": totalComEstorno, "cash": totalEspecie, "pagamentos": pagamentos });
-  } catch (err: any) {
+
+     } catch (err: any) {
     console.log(err);
     return res.status(500).json({ "retorno": "ERRO" });
   }
