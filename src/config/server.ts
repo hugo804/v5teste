@@ -4093,9 +4093,18 @@ app.get("/pagamentos-adm/:maquinaId", verifyJwtPessoa, async (req: any, res) => 
     }
 
     // Verifica se o estoque está definido e retorna seu valor
+    const probabilidade = maquina.probabilidade !== null ? maquina.probabilidade : '--';
+    const garraforte = maquina.garraforte !== null ? maquina.garraforte : '--';
+    const contadorcredito = maquina.contadorcredito !== null ? maquina.contadorcredito : '--';
+    const contadorcreditobaixo = maquina.contadorcreditobaixo !== null ? maquina.contadorcreditobaixo : '--';
+    const contadorpelucia = maquina.contadorpelucia !== null ? maquina.contadorpelucia : '--';
     const estoque = maquina.estoque !== null ? maquina.estoque : '--';
-
-
+    const estoquebaixo = maquina.estoquebaixo !== null ? maquina.estoquebaixo : '--';
+    const estoque2 = maquina.estoque2 !== null ? maquina.estoque2 : '--';
+    const estoque3 = maquina.estoque3 !== null ? maquina.estoque3 : '--';
+    const estoque4 = maquina.estoque4 !== null ? maquina.estoque4 : '--';
+    const estoque5 = maquina.estoque5 !== null ? maquina.estoque5 : '--';
+    const estado = maquina.estado !== null ? maquina.estado : '--';
     let totalSemEstorno = 0;
     let totalComEstorno = 0;
 
@@ -4185,7 +4194,8 @@ app.post("/pagamentos-periodo/:maquinaId", verifyJWT, async (req: any, res) => {
     }
 
     return res.status(200).json({ "total": totalSemEstorno, "estornos": totalComEstorno, "cash": totalEspecie, "pagamentos": pagamentos });
-  } catch (err: any) {
+
+    } catch (err: any) {
     console.log(err);
     return res.status(500).json({ "retorno": "ERRO" });
   }
